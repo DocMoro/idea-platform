@@ -1,0 +1,118 @@
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+
+  border: 1px rgba(0, 0, 0, 0) solid;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.logo {
+  background-image: url('../../assets/logo.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+
+  height: 60px;
+}
+
+.stopsContainer {
+  position: relative;
+}
+
+.stops {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  color: #a9a9a9;
+
+  padding: 0px 35px 8px;
+  border-bottom: 1px #a9a9a9 solid;
+}
+
+.airplane {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background-image: url('../../assets/airplane.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.time {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 2rem;
+
+  color: #6b6b6b;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+
+  width: 280px;
+  padding: 20px;
+
+  background-color: #fff;
+}
+
+.right {
+  padding: 20px;
+  width: 100%;
+
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #fff;
+
+  height: 60px;
+  width: 100%;
+  background-color: #ff8c00;
+  border-radius: 5px;
+
+  margin-top: 10px;
+}
+
+.text {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+.date {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+
+  margin-top: 3px;
+}
