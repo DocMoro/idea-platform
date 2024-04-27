@@ -1,4 +1,5 @@
 type TTicket = {
+  id: number
   origin: string
   origin_name: string
   destination: string

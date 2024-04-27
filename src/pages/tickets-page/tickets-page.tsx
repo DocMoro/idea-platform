@@ -1,26 +1,25 @@
-import { FC } from 'react'
-import { TicketCell } from '../../components/ticketCell'
+import { FC, useState } from 'react'
+import { TicketList } from '../../components/ticketList'
+import data from '../../constants/tickets.json'
+import { TTicket } from '../../constants/type'
 
-const ticket = {
-  origin: 'VVO',
-  origin_name: 'Владивосток',
-  destination: 'TLV',
-  destination_name: 'Тель-Авив',
-  departure_date: '12.05.18',
-  departure_time: '16:50',
-  arrival_date: '12.05.18',
-  arrival_time: '23:35',
-  carrier: 'SU',
-  stops: 1,
-  price: 16700
-}
+const sortDataWithId = data.tickets
+  .sort((prev, next) => prev.price - next.price)
+  .map((ticket, index) => {
+    return {
+      ...ticket,
+      id: index
+    }
+  })
 
 type TicketsPageProps = {}
 
 export const TicketsPage: FC<TicketsPageProps> = () => {
+  const [tickets, setTickets] = useState<TTicket[]>(sortDataWithId)
+
   return (
     <div style={{ width: 663 }}>
-      <TicketCell ticket={ticket} />
+      <TicketList tickets={tickets} />
     </div>
   )
 }
