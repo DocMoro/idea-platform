@@ -45,8 +45,9 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket }) => {
 
   const getPriceString = () => {
     const thousands = Math.floor(price / 1000)
+    const remainder = String(price % 1000)
 
-    return `${thousands || ''} ${price % 1000}`
+    return `${thousands || ''} ${'000'.slice(remainder.length) + remainder}`
   }
 
   return (
