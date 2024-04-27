@@ -1,0 +1,33 @@
+.ticket {
+  &__logo {
+    background-image: url('../../assets/logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+
+    height: 60px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    width: 180px;
+    padding: 20px;
+  }
+
+  &__button {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #fff;
+
+    height: 60px;
+    width: 100%;
+    background-color: #ff8c00;
+    border-radius: 5px;
+
+    margin-top: 10px;
+  }
+}
