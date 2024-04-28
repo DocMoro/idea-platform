@@ -1,39 +1,51 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import './customToggleGroup.scss'
 import clsx from 'clsx'
-import { FC } from 'react'
+import { FC, useCallback, useState } from 'react'
 
 type CustomToggleGroup = {
   className?: string
 }
 
-export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className }) => (
-  <ToggleGroup.Root
-    className={clsx('ToggleGroup', className)}
-    type="single"
-    defaultValue="left"
-    aria-label="Text alignment"
-  >
-    <ToggleGroup.Item
-      className="ToggleGroupItem"
-      value="left"
-      aria-label="Left aligned"
+export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className }) => {
+  const [state, setState] = useState('RUB')
+
+  const handleChange = useCallback((value: string) => {
+    setState(value)
+  }, [])
+
+  return (
+    <ToggleGroup.Root
+      className={clsx('ToggleGroup', className)}
+      type="single"
+      aria-label="Text alignment"
+      onValueChange={handleChange}
+      value={state}
     >
-      RUB
-    </ToggleGroup.Item>
-    <ToggleGroup.Item
-      className="ToggleGroupItem"
-      value="center"
-      aria-label="Center aligned"
-    >
-      USD
-    </ToggleGroup.Item>
-    <ToggleGroup.Item
-      className="ToggleGroupItem"
-      value="right"
-      aria-label="Right aligned"
-    >
-      EUR
-    </ToggleGroup.Item>
-  </ToggleGroup.Root>
-)
+      <ToggleGroup.Item
+        className="ToggleGroupItem"
+        value="RUB"
+        aria-label="Left aligned"
+        disabled={state === 'RUB' ? true : false}
+      >
+        RUB
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        className="ToggleGroupItem"
+        value="USD"
+        aria-label="Center aligned"
+        disabled={state === 'USD' ? true : false}
+      >
+        USD
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        className="ToggleGroupItem"
+        value="EUR"
+        aria-label="Right aligned"
+        disabled={state === 'EUR' ? true : false}
+      >
+        EUR
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+  )
+}

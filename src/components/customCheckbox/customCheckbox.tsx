@@ -1,6 +1,6 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
-import './customCheckbox.scss'
+import s from './customCheckbox.module.scss'
 import { FC } from 'react'
 
 type CustomCheckboxProps = {
@@ -8,13 +8,13 @@ type CustomCheckboxProps = {
 }
 
 export const CustomCheckbox: FC<CustomCheckboxProps> = ({ text }) => (
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <Checkbox.Root className="CheckboxRoot" defaultChecked id="c1">
-      <Checkbox.Indicator className="CheckboxIndicator">
+  <div className={s.container}>
+    <Checkbox.Root className={s.root} id={text}>
+      <Checkbox.Indicator className={s.indicator}>
         <CheckIcon />
       </Checkbox.Indicator>
     </Checkbox.Root>
-    <label className="Label" htmlFor="c1">
+    <label className={s.label} htmlFor={text}>
       {text}
     </label>
   </div>
