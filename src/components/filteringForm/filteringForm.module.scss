@@ -1,0 +1,41 @@
+.form {
+  background-color: #fff;
+
+  padding: 15px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
+.reset {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.6rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  color: #69a8ff;
+}
+
+.title {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  color: #757474;
+
+  margin-bottom: 15px;
+}
+
+.checkboxCell {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.toggleGroup {
+  margin-bottom: 30px;
+}

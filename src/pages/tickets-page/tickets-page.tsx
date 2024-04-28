@@ -2,6 +2,8 @@ import { FC, useState } from 'react'
 import { TicketList } from '../../components/ticketList'
 import data from '../../constants/tickets.json'
 import { TTicket } from '../../constants/type'
+import { FilteringForm } from '../../components/filteringForm'
+import s from './tickets-page.module.scss'
 
 const sortDataWithId = data.tickets
   .sort((prev, next) => prev.price - next.price)
@@ -18,8 +20,9 @@ export const TicketsPage: FC<TicketsPageProps> = () => {
   const [tickets, setTickets] = useState<TTicket[]>(sortDataWithId)
 
   return (
-    <div style={{ width: 663 }}>
+    <section className={s.ticketsSection}>
+      <FilteringForm />
       <TicketList tickets={tickets} />
-    </div>
+    </section>
   )
 }
