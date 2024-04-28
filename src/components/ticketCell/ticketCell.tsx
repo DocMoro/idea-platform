@@ -2,13 +2,14 @@ import { FC } from 'react'
 
 import s from './ticketCell.module.scss'
 import { TTicket } from '../../constants/type'
-import { dayName, monthName } from '../../constants/constants'
+import { currencySymbol, dayName, monthName } from '../../constants/constants'
 
 type TicketCellProps = {
   ticket: TTicket
+  currency: string
 }
 
-export const TicketCell: FC<TicketCellProps> = ({ ticket }) => {
+export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
   const {
     price,
     departure_time,
@@ -56,7 +57,7 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket }) => {
         <div className={s.logo}></div>
         <button className={s.button}>
           Купить <br />
-          за {getPriceString()}₽
+          за {`${getPriceString()}${currencySymbol[currency]}`}
         </button>
       </div>
       <div className={s.right}>

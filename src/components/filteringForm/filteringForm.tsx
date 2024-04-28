@@ -3,11 +3,15 @@ import { CustomCheckbox } from '../customCheckbox'
 import s from './filteringForm.module.scss'
 import { CustomToggleGroup } from '../customToggleGroup'
 
-export const FilteringForm: FC = () => {
+type FilteringFormProps = {
+  setCurrency: (value: string) => void
+}
+
+export const FilteringForm: FC<FilteringFormProps> = ({ setCurrency }) => {
   return (
     <form className={s.form}>
       <h3 className={s.title}>Валюта</h3>
-      <CustomToggleGroup className={s.toggleGroup} />
+      <CustomToggleGroup className={s.toggleGroup} setCurrency={setCurrency} />
       <h3 className={s.title}>Количество пересадок</h3>
       <ul className={s.checkboxList}>
         <li className={s.checkboxCell}>

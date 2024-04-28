@@ -5,13 +5,18 @@ import { FC, useCallback, useState } from 'react'
 
 type CustomToggleGroup = {
   className?: string
+  setCurrency: (value: string) => void
 }
 
-export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className }) => {
+export const CustomToggleGroup: FC<CustomToggleGroup> = ({
+  className,
+  setCurrency
+}) => {
   const [state, setState] = useState('RUB')
 
   const handleChange = useCallback((value: string) => {
     setState(value)
+    setCurrency(value)
   }, [])
 
   return (
