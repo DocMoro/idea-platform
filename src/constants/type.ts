@@ -13,4 +13,8 @@ type TTicket = {
   price: number
 }
 
-export type { TTicket }
+type TFilters = {
+  [index: string]: boolean
+}
+
+export type { TTicket, TFilters }

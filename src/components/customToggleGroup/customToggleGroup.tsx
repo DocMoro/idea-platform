@@ -1,7 +1,7 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import './customToggleGroup.scss'
 import clsx from 'clsx'
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 
 type CustomToggleGroup = {
   className?: string
@@ -16,8 +16,11 @@ export const CustomToggleGroup: FC<CustomToggleGroup> = ({
 
   const handleChange = useCallback((value: string) => {
     setState(value)
-    setCurrency(value)
   }, [])
+
+  useEffect(() => {
+    setCurrency(state)
+  }, [state])
 
   return (
     <ToggleGroup.Root

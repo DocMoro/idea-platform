@@ -21,6 +21,10 @@
   height: 40px;
   width: 65px;
   margin-left: 1px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 .ToggleGroupItem:first-child {
   margin-left: 0;

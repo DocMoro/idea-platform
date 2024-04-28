@@ -4,17 +4,21 @@
 }
 
 .root {
-  background-color: white;
+  background-color: rgb(252, 251, 251);
   width: 25px;
   height: 25px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px #5e84ff;
+  border: 1px solid #858585;
 
-  &:focus {
-    box-shadow: 0 0 0 2px black;
+  &[data-state='checked'] {
+    border: 2px solid #5e84ff;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -27,4 +31,8 @@
   padding-left: 15px;
   font-size: 15px;
   line-height: 1;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

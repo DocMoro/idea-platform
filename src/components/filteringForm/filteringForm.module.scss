@@ -13,6 +13,8 @@
   line-height: 1.2rem;
   text-transform: uppercase;
   color: #69a8ff;
+
+  opacity: 0;
 }
 
 .title {
@@ -33,6 +35,11 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &:hover .reset {
+    opacity: 1;
+    cursor: pointer;
   }
 }
 
