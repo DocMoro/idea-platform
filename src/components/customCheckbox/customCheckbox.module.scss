@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.root {
+  background-color: rgb(252, 251, 251);
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #858585;
+
+  &[data-state='checked'] {
+    border: 2px solid #5e84ff;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.indicator {
+  color: #5e84ff;
+}
+
+.label {
+  color: #4d4d4d;
+  padding-left: 15px;
+  font-size: 15px;
+  line-height: 1;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
