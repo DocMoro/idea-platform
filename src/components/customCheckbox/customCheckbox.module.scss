@@ -22,6 +22,32 @@
   }
 }
 
+.checkboxCell {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover .reset {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.reset {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.6rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  color: #69a8ff;
+
+  opacity: 0;
+}
+
 .indicator {
   color: #5e84ff;
 }

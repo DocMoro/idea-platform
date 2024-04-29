@@ -34,4 +34,12 @@ const currencySymbol: ICurrencySymbol = {
   EUR: '€'
 }
 
-export { dayName, monthName, currencyRatio, currencySymbol }
+const checkboxData = [
+  ['Все', 'all'],
+  ['Без пересадок', '0'],
+  ['1 пересадка', '1'],
+  ['2 пересадки', '2'],
+  ['3 пересадки', '3']
+]
+
+export { dayName, monthName, currencyRatio, currencySymbol, checkboxData }

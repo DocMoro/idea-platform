@@ -18,6 +18,19 @@ export const CustomCheckbox: FC<CustomCheckboxProps> = ({ text, value, filters, 
     setChecked(checked)
   }, [])
 
+  const handleReset = useCallback((value: string) => {
+    const newState: TFilters = {}
+
+    for (const key in filters) {
+      if (key === value) {
+        newState[key] = true
+      } else {
+        newState[key] = false
+      }
+    }
+    setFilters(newState)
+  }, [])
+
   useEffect(() => {
     setFilters({
       ...filters,
@@ -26,20 +39,25 @@ export const CustomCheckbox: FC<CustomCheckboxProps> = ({ text, value, filters, 
   }, [checked])
 
   return (
-    <div className={s.container}>
-      <Checkbox.Root
-        checked={filters[value]}
-        onCheckedChange={handleChecked}
-        className={s.root}
-        id={value}
-      >
-        <Checkbox.Indicator className={s.indicator}>
-          <CheckIcon />
-        </Checkbox.Indicator>
-      </Checkbox.Root>
-      <label className={s.label} htmlFor={value}>
-        {text}
-      </label>
-    </div>
+    <li className={s.checkboxCell}>
+      <div className={s.container}>
+        <Checkbox.Root
+          checked={filters[value]}
+          onCheckedChange={handleChecked}
+          className={s.root}
+          id={value}
+        >
+          <Checkbox.Indicator className={s.indicator}>
+            <CheckIcon />
+          </Checkbox.Indicator>
+        </Checkbox.Root>
+        <label className={s.label} htmlFor={value}>
+          {text}
+        </label>
+      </div>
+      <button className={s.reset} type="button" onClick={() => handleReset('3')}>
+        Только
+      </button>
+    </li>
   )
 }
