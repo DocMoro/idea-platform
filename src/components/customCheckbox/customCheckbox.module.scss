@@ -4,13 +4,13 @@
 }
 
 .root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(252, 251, 251);
   width: 25px;
   height: 25px;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #858585;
 
   &[data-state='checked'] {

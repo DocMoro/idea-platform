@@ -1,8 +1,7 @@
 import { FC } from 'react'
-
-import s from './ticketCell.module.scss'
 import { TTicket } from '../../constants/type'
 import { currencySymbol, dayName, monthName } from '../../constants/constants'
+import s from './ticketCell.module.scss'
 
 type TicketCellProps = {
   ticket: TTicket
@@ -48,8 +47,13 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
     const thousands = Math.floor(price / 1000)
     const remainder = String(price % 1000)
 
-    return `${thousands || ''} ${'000'.slice(remainder.length) + remainder}`
+    return `${thousands || ''} ${thousands ? '000'.slice(remainder.length) + remainder : remainder}`
   }
+
+  const priceStr = `${getPriceString()}${currencySymbol[currency]}`
+  const stopsStr = getStopsString()
+  const dateDepartureStr = getDateString(departure_date)
+  const dateArrivalStr = getDateString(arrival_date)
 
   return (
     <li className={s.ticket}>
@@ -57,14 +61,14 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
         <div className={s.logo}></div>
         <button className={s.button}>
           Купить <br />
-          за {`${getPriceString()}${currencySymbol[currency]}`}
+          за {priceStr}
         </button>
       </div>
       <div className={s.right}>
         <div className={s.container}>
           <p className={s.time}>{departure_time}</p>
           <div className={s.stopsContainer}>
-            <p className={s.stops}>{getStopsString()}</p>
+            <p className={s.stops}>{stopsStr}</p>
             <div className={s.airplane}></div>
           </div>
           <p className={s.time}>{arrival_time}</p>
@@ -72,11 +76,11 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
         <div className={s.container}>
           <div className={s.textContainer}>
             <p className={s.text}>{`${origin}, ${origin_name}`}</p>
-            <p className={s.date}>{getDateString(departure_date)}</p>
+            <p className={s.date}>{dateDepartureStr}</p>
           </div>
           <div className={s.textContainer}>
             <p className={s.text}>{`${destination_name}, ${destination}`}</p>
-            <p className={s.date}>{getDateString(arrival_date)}</p>
+            <p className={s.date}>{dateArrivalStr}</p>
           </div>
         </div>
       </div>

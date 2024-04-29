@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { CustomCheckbox } from '../customCheckbox'
-import s from './filteringForm.module.scss'
 import { CustomToggleGroup } from '../customToggleGroup'
 import { TFilters } from '../../constants/type'
 import { checkboxData } from '../../constants/constants'
+import s from './filteringForm.module.scss'
 
 type FilteringFormProps = {
   setCurrency: (value: string) => void

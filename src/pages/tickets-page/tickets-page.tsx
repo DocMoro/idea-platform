@@ -1,12 +1,15 @@
 import { FC, useEffect, useMemo, useState } from 'react'
-import { TicketList } from '../../components/ticketList'
-import data from '../../constants/tickets.json'
-import { TFilters, TTicket } from '../../constants/type'
-import { FilteringForm } from '../../components/filteringForm'
-import s from './tickets-page.module.scss'
-import { currencyRatio } from '../../constants/constants'
 import { useQuery } from '../../hooks/use-query'
 import { useNavigate } from 'react-router-dom'
+
+import { FilteringForm } from '../../components/filteringForm'
+import { TicketList } from '../../components/ticketList'
+
+import data from '../../constants/tickets.json'
+import { TFilters, TTicket } from '../../constants/type'
+import { currencyRatio } from '../../constants/constants'
+
+import s from './tickets-page.module.scss'
 
 const sortDataWithId = data.tickets
   .sort((prev, next) => prev.price - next.price)
@@ -17,15 +20,14 @@ const sortDataWithId = data.tickets
     }
   })
 
-type TicketsPageProps = {}
-
-export const TicketsPage: FC<TicketsPageProps> = () => {
+export const TicketsPage: FC = () => {
   const [ticketsData, setTicketsData] = useState<TTicket[]>([])
   const [currency, setCurrency] = useState<string>('RUB')
+  const navigate = useNavigate()
   const query = useQuery()
   const [filters, setFilters] = useState<TFilters>(() => {
     const params = query.get('type')?.split('%') || []
-    console.log(params)
+
     return {
       all: params.includes('all'),
       0: params.includes('0'),
@@ -34,7 +36,6 @@ export const TicketsPage: FC<TicketsPageProps> = () => {
       3: params.includes('3')
     }
   })
-  const navigate = useNavigate()
 
   const urlParams = useMemo(() => {
     let arr = []
@@ -53,6 +54,7 @@ export const TicketsPage: FC<TicketsPageProps> = () => {
 
   useEffect(() => {
     const check = Object.values(filters).reduce((prev, curr) => prev && !curr, true)
+    console.log(filters)
 
     if (filters['all'] || check) {
       setTicketsData(sortDataWithId)
