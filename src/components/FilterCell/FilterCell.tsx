@@ -1,15 +1,15 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { TFilters } from '../../constants/type'
 import { FilterCellContainer } from './FilterCellContainer'
+import FilteringContext from '../../store/FilteringContext'
 
 type FilterCellProps = {
   text: string
   value: string
-  filters: TFilters
-  setFilters: (object: TFilters) => void
 }
 
-export const FilterCell: FC<FilterCellProps> = ({ text, value, filters, setFilters }) => {
+export const FilterCell: FC<FilterCellProps> = ({ text, value }) => {
+  const { filters, setFilters } = useContext(FilteringContext)
   const [checked, setChecked] = useState(filters[value])
 
   const handleChecked = (checked: boolean) => {

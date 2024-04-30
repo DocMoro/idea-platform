@@ -2,14 +2,14 @@ import { FC, useEffect, useMemo, useState } from 'react'
 import { useQuery } from '../../hooks/use-query'
 import { useNavigate } from 'react-router-dom'
 
-import { FilteringForm } from '../../components/FilteringForm'
-import { TicketList } from '../../components/TicketList'
+import { TicketsPageContainer } from './tickets-page-container'
 
 import data from '../../constants/tickets.json'
-import { TFilters, TTicket } from '../../constants/type'
+import { TCurrency, TFilters, TTicket } from '../../constants/type'
 import { currencyRatio } from '../../constants/constants'
 
-import s from './tickets-page.module.scss'
+import CurrencyContext from '../../store/CurrencyContext'
+import FilteringContext from '../../store/FilteringContext'
 
 const sortDataWithId = data.tickets
   .sort((prev, next) => prev.price - next.price)
@@ -21,8 +21,8 @@ const sortDataWithId = data.tickets
   })
 
 export const TicketsPage: FC = () => {
+  const [currency, setCurrency] = useState<TCurrency>('RUB')
   const [ticketsData, setTicketsData] = useState<TTicket[]>([])
-  const [currency, setCurrency] = useState<string>('RUB')
   const navigate = useNavigate()
   const query = useQuery()
   const [filters, setFilters] = useState<TFilters>(() => {
@@ -76,9 +76,10 @@ export const TicketsPage: FC = () => {
   }, [currency, ticketsData])
 
   return (
-    <section className={s.ticketsSection}>
-      <FilteringForm setCurrency={setCurrency} filters={filters} setFilters={setFilters} />
-      <TicketList tickets={tickets} currency={currency} />
-    </section>
+    <CurrencyContext.Provider value={{ currency, setCurrency }}>
+      <FilteringContext.Provider value={{ filters, setFilters }}>
+        <TicketsPageContainer tickets={tickets} />
+      </FilteringContext.Provider>
+    </CurrencyContext.Provider>
   )
 }

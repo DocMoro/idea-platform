@@ -13,8 +13,10 @@ type TTicket = {
   price: number
 }
 
+type TCurrency = 'RUB' | 'EUR' | 'USD'
+
 type TFilters = {
   [index: string]: boolean
 }
 
-export type { TTicket, TFilters }
+export type { TTicket, TFilters, TCurrency }

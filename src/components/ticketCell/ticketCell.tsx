@@ -1,15 +1,15 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { TTicket } from '../../constants/type'
 import { currencySymbol } from '../../constants/constants'
 import { getDateString, getPriceString, getStopsString } from '../../utils/pureFunc'
 import s from './TicketCell.module.scss'
+import CurrencyContext from '../../store/CurrencyContext'
 
 type TicketCellProps = {
   ticket: TTicket
-  currency: string
 }
 
-export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
+export const TicketCell: FC<TicketCellProps> = ({ ticket }) => {
   const {
     price,
     departure_time,
@@ -22,6 +22,7 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
     arrival_date,
     departure_date
   } = ticket
+  const { currency } = useContext(CurrencyContext)
 
   const priceStr = `${getPriceString(price)}${currencySymbol[currency]}`
   const stopsStr = getStopsString(stops)

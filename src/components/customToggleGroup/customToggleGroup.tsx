@@ -1,17 +1,19 @@
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import s from './CustomToggleGroup.module.scss'
+import CurrencyContext from '../../store/CurrencyContext'
+import { TCurrency } from '../../constants/type'
 
 type CustomToggleGroupProps = {
   className?: string
-  setCurrency: (value: string) => void
 }
 
-export const CustomToggleGroup: FC<CustomToggleGroupProps> = ({ className, setCurrency }) => {
-  const [state, setState] = useState('RUB')
+export const CustomToggleGroup: FC<CustomToggleGroupProps> = ({ className }) => {
+  const [state, setState] = useState<TCurrency>('RUB')
+  const { setCurrency } = useContext(CurrencyContext)
 
-  const handleChange = useCallback((value: string) => {
+  const handleChange = useCallback((value: TCurrency) => {
     setState(value)
   }, [])
 
