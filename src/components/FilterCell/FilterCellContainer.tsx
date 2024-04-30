@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
-import s from './customCheckbox.module.scss'
+import s from './FilterCell.module.scss'
 
 type FilterCellContainerProps = {
   text: string

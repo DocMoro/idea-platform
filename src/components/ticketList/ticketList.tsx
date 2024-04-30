@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { TicketCell } from '../TicketCell'
 import { TTicket } from '../../constants/type'
-import s from './ticketList.module.scss'
+import s from './TicketList.module.scss'
 
 type TicketListProps = {
   tickets: TTicket[]

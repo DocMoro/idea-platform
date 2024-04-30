@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { TTicket } from '../../constants/type'
 import { currencySymbol } from '../../constants/constants'
 import { getDateString, getPriceString, getStopsString } from '../../utils/pureFunc'
-import s from './ticketCell.module.scss'
+import s from './TicketCell.module.scss'
 
 type TicketCellProps = {
   ticket: TTicket

@@ -3,7 +3,7 @@ import { FilterCell } from '../FilterCell'
 import { CustomToggleGroup } from '../CustomToggleGroup'
 import { TFilters } from '../../constants/type'
 import { checkboxData } from '../../constants/constants'
-import s from './filteringForm.module.scss'
+import s from './FilteringForm.module.scss'
 
 type FilteringFormProps = {
   setCurrency: (value: string) => void

@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import s from './customToggleGroup.module.scss'
+import s from './CustomToggleGroup.module.scss'
 
 type CustomToggleGroupProps = {
   className?: string
