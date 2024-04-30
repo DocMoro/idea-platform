@@ -1,1 +1,1 @@
-export * from './ticketList'
+export * from './TicketList'

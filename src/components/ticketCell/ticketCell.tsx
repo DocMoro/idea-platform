@@ -1,15 +1,15 @@
-import { FC } from 'react'
-
-import s from './ticketCell.module.scss'
+import { FC, useContext } from 'react'
 import { TTicket } from '../../constants/type'
-import { currencySymbol, dayName, monthName } from '../../constants/constants'
+import { currencySymbol } from '../../constants/constants'
+import { getDateString, getPriceString, getStopsString } from '../../utils/pureFunc'
+import s from './TicketCell.module.scss'
+import CurrencyContext from '../../store/CurrencyContext'
 
 type TicketCellProps = {
   ticket: TTicket
-  currency: string
 }
 
-export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
+export const TicketCell: FC<TicketCellProps> = ({ ticket }) => {
   const {
     price,
     departure_time,
@@ -22,34 +22,12 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
     arrival_date,
     departure_date
   } = ticket
+  const { currency } = useContext(CurrencyContext)
 
-  const getStopsString = () => {
-    const check = stops % 10
-    let result
-
-    if (check > 4 || check === 0) result = 'пересадок'
-    else if (check > 1) result = 'пересадки'
-    else result = 'пересадка'
-
-    return `${stops} ${result}`
-  }
-
-  const getDateString = (dateStr: string) => {
-    const year = +('20' + dateStr.slice(6))
-    const month = parseInt(dateStr.slice(4, 6))
-    const day = parseInt(dateStr.slice(0, 3))
-
-    const date = new Date(year, month, day)
-
-    return `${day} ${monthName[month - 1]} ${year}, ${dayName[date.getDay()]}`
-  }
-
-  const getPriceString = () => {
-    const thousands = Math.floor(price / 1000)
-    const remainder = String(price % 1000)
-
-    return `${thousands || ''} ${'000'.slice(remainder.length) + remainder}`
-  }
+  const priceStr = `${getPriceString(price)}${currencySymbol[currency]}`
+  const stopsStr = getStopsString(stops)
+  const dateDepartureStr = getDateString(departure_date)
+  const dateArrivalStr = getDateString(arrival_date)
 
   return (
     <li className={s.ticket}>
@@ -57,14 +35,14 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
         <div className={s.logo}></div>
         <button className={s.button}>
           Купить <br />
-          за {`${getPriceString()}${currencySymbol[currency]}`}
+          за {priceStr}
         </button>
       </div>
       <div className={s.right}>
         <div className={s.container}>
           <p className={s.time}>{departure_time}</p>
           <div className={s.stopsContainer}>
-            <p className={s.stops}>{getStopsString()}</p>
+            <p className={s.stops}>{stopsStr}</p>
             <div className={s.airplane}></div>
           </div>
           <p className={s.time}>{arrival_time}</p>
@@ -72,11 +50,11 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
         <div className={s.container}>
           <div className={s.textContainer}>
             <p className={s.text}>{`${origin}, ${origin_name}`}</p>
-            <p className={s.date}>{getDateString(departure_date)}</p>
+            <p className={s.date}>{dateDepartureStr}</p>
           </div>
           <div className={s.textContainer}>
             <p className={s.text}>{`${destination_name}, ${destination}`}</p>
-            <p className={s.date}>{getDateString(arrival_date)}</p>
+            <p className={s.date}>{dateArrivalStr}</p>
           </div>
         </div>
       </div>

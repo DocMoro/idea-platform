@@ -1,1 +1,1 @@
-export * from './customToggleGroup'
+export * from './CustomToggleGroup'

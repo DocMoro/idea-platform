@@ -1,56 +1,50 @@
-import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import './customToggleGroup.scss'
+import { FC, useCallback, useContext } from 'react'
 import clsx from 'clsx'
-import { FC, useCallback, useEffect, useState } from 'react'
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
+import s from './CustomToggleGroup.module.scss'
+import CurrencyContext from '../../store/CurrencyContext'
+import { TCurrency } from '../../constants/type'
 
-type CustomToggleGroup = {
+type CustomToggleGroupProps = {
   className?: string
-  setCurrency: (value: string) => void
 }
 
-export const CustomToggleGroup: FC<CustomToggleGroup> = ({
-  className,
-  setCurrency
-}) => {
-  const [state, setState] = useState('RUB')
+export const CustomToggleGroup: FC<CustomToggleGroupProps> = ({ className }) => {
+  const { currency, setCurrency } = useContext(CurrencyContext)
 
-  const handleChange = useCallback((value: string) => {
-    setState(value)
+  const handleChange = useCallback((value: TCurrency) => {
+    setCurrency(value)
   }, [])
-
-  useEffect(() => {
-    setCurrency(state)
-  }, [state])
 
   return (
     <ToggleGroup.Root
-      className={clsx('ToggleGroup', className)}
+      className={clsx(s.group, className)}
       type="single"
       aria-label="Text alignment"
       onValueChange={handleChange}
-      value={state}
+      value={currency}
     >
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="RUB"
         aria-label="Left aligned"
-        disabled={state === 'RUB' ? true : false}
+        disabled={currency === 'RUB' ? true : false}
       >
         RUB
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="USD"
         aria-label="Center aligned"
-        disabled={state === 'USD' ? true : false}
+        disabled={currency === 'USD' ? true : false}
       >
         USD
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="EUR"
         aria-label="Right aligned"
-        disabled={state === 'EUR' ? true : false}
+        disabled={currency === 'EUR' ? true : false}
       >
         EUR
       </ToggleGroup.Item>
