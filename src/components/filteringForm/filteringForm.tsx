@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { CustomCheckbox } from '../customCheckbox'
-import { CustomToggleGroup } from '../customToggleGroup'
+import { FilterCell } from '../FilterCell'
+import { CustomToggleGroup } from '../CustomToggleGroup'
 import { TFilters } from '../../constants/type'
 import { checkboxData } from '../../constants/constants'
 import s from './filteringForm.module.scss'
@@ -19,12 +19,7 @@ export const FilteringForm: FC<FilteringFormProps> = ({ setCurrency, filters, se
       <h3 className={s.title}>Количество пересадок</h3>
       <ul className={s.checkboxList}>
         {checkboxData.map((data) => (
-          <CustomCheckbox
-            text={data[0]}
-            value={data[1]}
-            filters={filters}
-            setFilters={setFilters}
-          />
+          <FilterCell text={data[0]} value={data[1]} filters={filters} setFilters={setFilters} />
         ))}
       </ul>
     </form>

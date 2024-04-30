@@ -1,1 +1,1 @@
-export * from './ticketCell'
+export * from './TicketCell'

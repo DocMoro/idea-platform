@@ -1,14 +1,14 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import './customToggleGroup.scss'
+import s from './customToggleGroup.module.scss'
 
-type CustomToggleGroup = {
+type CustomToggleGroupProps = {
   className?: string
   setCurrency: (value: string) => void
 }
 
-export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className, setCurrency }) => {
+export const CustomToggleGroup: FC<CustomToggleGroupProps> = ({ className, setCurrency }) => {
   const [state, setState] = useState('RUB')
 
   const handleChange = useCallback((value: string) => {
@@ -21,14 +21,14 @@ export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className, setCurrenc
 
   return (
     <ToggleGroup.Root
-      className={clsx('ToggleGroup', className)}
+      className={clsx(s.group, className)}
       type="single"
       aria-label="Text alignment"
       onValueChange={handleChange}
       value={state}
     >
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="RUB"
         aria-label="Left aligned"
         disabled={state === 'RUB' ? true : false}
@@ -36,7 +36,7 @@ export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className, setCurrenc
         RUB
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="USD"
         aria-label="Center aligned"
         disabled={state === 'USD' ? true : false}
@@ -44,7 +44,7 @@ export const CustomToggleGroup: FC<CustomToggleGroup> = ({ className, setCurrenc
         USD
       </ToggleGroup.Item>
       <ToggleGroup.Item
-        className="ToggleGroupItem"
+        className={s.item}
         value="EUR"
         aria-label="Right aligned"
         disabled={state === 'EUR' ? true : false}

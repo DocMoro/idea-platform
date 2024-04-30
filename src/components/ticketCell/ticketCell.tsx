@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { TTicket } from '../../constants/type'
-import { currencySymbol, dayName, monthName } from '../../constants/constants'
+import { currencySymbol } from '../../constants/constants'
+import { getDateString, getPriceString, getStopsString } from '../../utils/pureFunc'
 import s from './ticketCell.module.scss'
 
 type TicketCellProps = {
@@ -22,36 +23,8 @@ export const TicketCell: FC<TicketCellProps> = ({ ticket, currency }) => {
     departure_date
   } = ticket
 
-  const getStopsString = () => {
-    const check = stops % 10
-    let result
-
-    if (check > 4 || check === 0) result = 'пересадок'
-    else if (check > 1) result = 'пересадки'
-    else result = 'пересадка'
-
-    return `${stops} ${result}`
-  }
-
-  const getDateString = (dateStr: string) => {
-    const year = +('20' + dateStr.slice(6))
-    const month = parseInt(dateStr.slice(4, 6))
-    const day = parseInt(dateStr.slice(0, 3))
-
-    const date = new Date(year, month, day)
-
-    return `${day} ${monthName[month - 1]} ${year}, ${dayName[date.getDay()]}`
-  }
-
-  const getPriceString = () => {
-    const thousands = Math.floor(price / 1000)
-    const remainder = String(price % 1000)
-
-    return `${thousands || ''} ${thousands ? '000'.slice(remainder.length) + remainder : remainder}`
-  }
-
-  const priceStr = `${getPriceString()}${currencySymbol[currency]}`
-  const stopsStr = getStopsString()
+  const priceStr = `${getPriceString(price)}${currencySymbol[currency]}`
+  const stopsStr = getStopsString(stops)
   const dateDepartureStr = getDateString(departure_date)
   const dateArrivalStr = getDateString(arrival_date)
 

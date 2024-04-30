@@ -2,8 +2,8 @@ import { FC, useEffect, useMemo, useState } from 'react'
 import { useQuery } from '../../hooks/use-query'
 import { useNavigate } from 'react-router-dom'
 
-import { FilteringForm } from '../../components/filteringForm'
-import { TicketList } from '../../components/ticketList'
+import { FilteringForm } from '../../components/FilteringForm'
+import { TicketList } from '../../components/TicketList'
 
 import data from '../../constants/tickets.json'
 import { TFilters, TTicket } from '../../constants/type'

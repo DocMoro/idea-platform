@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TicketCell } from '../ticketCell'
+import { TicketCell } from '../TicketCell'
 import { TTicket } from '../../constants/type'
 import s from './ticketList.module.scss'
 

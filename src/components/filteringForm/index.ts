@@ -1,1 +1,1 @@
-export * from './filteringForm'
+export * from './FilteringForm'
