@@ -50,7 +50,7 @@ export const TicketsPage: FC = () => {
 
   useEffect(() => {
     navigate(urlParams)
-  }, [urlParams, navigate])
+  }, [urlParams])
 
   useEffect(() => {
     const check = Object.values(filters).reduce((prev, curr) => prev && !curr, true)
