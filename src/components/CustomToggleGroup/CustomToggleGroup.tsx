@@ -12,9 +12,12 @@ type CustomToggleGroupProps = {
 export const CustomToggleGroup: FC<CustomToggleGroupProps> = ({ className }) => {
   const { currency, setCurrency } = useContext(CurrencyContext)
 
-  const handleChange = useCallback((value: TCurrency) => {
-    setCurrency(value)
-  }, [])
+  const handleChange = useCallback(
+    (value: TCurrency) => {
+      setCurrency(value)
+    },
+    [setCurrency]
+  )
 
   return (
     <ToggleGroup.Root

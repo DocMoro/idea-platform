@@ -11,8 +11,8 @@ export const FilteringForm: FC = () => {
       <CustomToggleGroup className={s.toggleGroup} />
       <h3 className={s.title}>Количество пересадок</h3>
       <ul className={s.checkboxList}>
-        {checkboxData.map((data) => (
-          <FilterCell text={data[0]} value={data[1]} />
+        {checkboxData.map((data, index) => (
+          <FilterCell text={data[0]} value={data[1]} key={index} />
         ))}
       </ul>
     </form>
