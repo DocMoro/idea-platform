@@ -11,7 +11,7 @@ import { currencyRatio } from '../../constants/constants'
 import CurrencyContext from '../../store/CurrencyContext'
 import FilteringContext from '../../store/FilteringContext'
 
-const sortDataWithId = data.tickets
+const sortedDataByCost = data.tickets
   .sort((prev, next) => prev.price - next.price)
   .map((ticket, index) => {
     return {
@@ -56,10 +56,10 @@ export const TicketsPage: FC = () => {
     const check = Object.values(filters).reduce((prev, curr) => prev && !curr, true)
 
     if (filters['all'] || check) {
-      setTicketsData(sortDataWithId)
+      setTicketsData(sortedDataByCost)
       return
     }
-    const newTickets = sortDataWithId.filter((ticket) => filters[ticket.stops])
+    const newTickets = sortedDataByCost.filter((ticket) => filters[ticket.stops])
     setTicketsData(newTickets)
   }, [filters])
 
