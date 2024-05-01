@@ -50,11 +50,10 @@ export const TicketsPage: FC = () => {
 
   useEffect(() => {
     navigate(urlParams)
-  }, [urlParams])
+  }, [urlParams, navigate])
 
   useEffect(() => {
     const check = Object.values(filters).reduce((prev, curr) => prev && !curr, true)
-    console.log(filters)
 
     if (filters['all'] || check) {
       setTicketsData(sortDataWithId)
