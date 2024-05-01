@@ -38,7 +38,7 @@ export const TicketsPage: FC = () => {
   })
 
   const urlParams = useMemo(() => {
-    let arr = []
+    const arr = []
 
     for (const param of Object.entries(filters)) {
       if (param[1]) {
@@ -62,7 +62,7 @@ export const TicketsPage: FC = () => {
     }
     const newTickets = sortDataWithId.filter((ticket) => filters[ticket.stops])
     setTicketsData(newTickets)
-  }, [query])
+  }, [filters])
 
   const tickets = useMemo(() => {
     const multiplier = currencyRatio[currency]
