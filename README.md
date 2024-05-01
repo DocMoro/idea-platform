@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Test assignment for Idea Platform.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**_Ссылка на [техническое задание](https://disk.yandex.ru/i/VRDSjabKCf3h2w)_**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Использован шаблон c-r-a --template typescript
 
-### `npm start`
+Для первичной инициализации проекта в его директории сперва нужно установить зависимости с помощью команды:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Для локального запуска проекта нужно использовать команду
 
-### `npm test`
+```sh
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**_Ссылка на продакшн: [idea-platform](https://docmoro.github.io/idea-platform/)_**
 
-### `npm run build`
+### Автоформатирование и проверка кода реализованы через Prettier и ESLint.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## В проекте использованы библиотеки
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] React;
+- [x] Typescript;
+- [x] React Router;
+- [x] Radix;
+- [x] Sass;
+- [x] react-app-polyfill;
+- [x] clsx;
+- [x] prettier;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Описание:
 
-### `npm run eject`
+Для ускорения разработки использованы шаблоны UI-компонентов **Radix**.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Данные для списка билетов получаются из файла tickets.json. Билеты предварительно отсортированы по цене вне компонента. Реализована поддержка IE11 с помощью библиотеки `react-app-polyfill`. Реализована фильтрация по ресурсам.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Для устранения props drilling был использован `useContext`. Был оптимизирован рендер компонентов за счёт вынесения pure function в отдельный файл. В некоторых случаях вёрстка и логика компонентов разделены.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Дополнительный функционал:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**React Router** использован для сохранения настроек фильтрации в url адресе страницы. При обновлении страницы и/или при открытии новой по url, настройки сохраняются. Для получения url параметров использован кастомный хукк `useQuery`. При изменении состояния фильтрации происходит формирования нового url и переход с помощью `useNavigate`.
 
-## Learn More
+Добавлено переключение стоимости билетов. Для конвертации валют были взяты статические данные.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Любые замечания по работе приложения приветствуются 😊
